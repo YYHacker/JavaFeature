@@ -132,5 +132,14 @@ public class StreamFunction {
        Stream<Integer> ss = Stream.iterate(1,p -> p*2).peek(e -> System.out.println("Fetching : "+e)).limit(20);
        Object[] powers = Stream.iterate(1,p -> p*2).peek(e -> System.out.println("Fetching : "+e)).limit(20).toArray( );
     }
+
+    /**
+     * IntFunction 测试
+     */
+    @Test
+    public void intFunction(){
+        Stream<MyIntFunction> stream = Stream.generate(MyIntFunction::new).limit(2);
+        stream.forEach(n->{System.out.println(Arrays.toString(n.apply(12)));});
+    }
 }
 
