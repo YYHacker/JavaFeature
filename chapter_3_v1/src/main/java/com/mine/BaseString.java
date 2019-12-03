@@ -31,6 +31,13 @@ public class BaseString {
         int[] codePoints = sentence.codePoints().toArray();
         //把码点转换为字符串
         String string = new String(codePoints,0,codePoints.length);
-        System.out.println(string  );
+        System.out.println(string);
+    }
+
+    public void method2(){
+        System.out.println("Test");
+    }
+
+    public void callm2(){
     }
 }
