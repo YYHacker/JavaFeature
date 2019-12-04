@@ -2,6 +2,8 @@ package com.mine.lambda;
 
 import org.junit.jupiter.api.Test;
 
+import java.sql.Time;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -81,15 +83,26 @@ public class LambdaTest {
         MyComparator mc = String::compareToIgnoreCase;
         System.out.println(mc.comparing("aaaa","bbb"));
         MyComparator mc1 =(x,y) -> x.compareToIgnoreCase(y);
-        MyComparator2 m2 = (x,y) -> x.test(y);
         MyComparator2 m22 = MyTest::test;
-        System.out.println(m22.comparing(new MyTest(),"bbb"));
+        System.out.println(m22.comparing(new MyTest("MyName"),"bbb",""));
+    }
+
+    @Test
+    public void method10(){
+       long time =  Instant.now().toEpochMilli();
+       System.out.println(time);
     }
 }
 class MyTest{
-    int test(String a){
-        String  b = this.concat(a);
-        return b.length();
+    private String name;
+
+    public MyTest(String name) {
+        this.name = name;
+    }
+
+    int test(String a,String b){
+        String  c = this.concat(a);
+        return c.length();
     }
     String concat(String a){
         return this + a;
@@ -100,7 +113,7 @@ interface MyComparator{
    int comparing(String s1,String s2);
 }
 interface MyComparator2{
-    int comparing(MyTest s1,String s2);
+    int comparing(MyTest s1,String s2,String s3);
 }
 class Person{
     private String fristname;
