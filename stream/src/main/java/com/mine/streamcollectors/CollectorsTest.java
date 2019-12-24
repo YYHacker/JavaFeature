@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import static java.util.stream.Collectors.*;
 import java.util.stream.Stream;
@@ -91,7 +92,5 @@ public class CollectorsTest {
         List<Map<String,String>> list = getlist();
         Map<String,Set<Map<String,String>>> map = list.stream().collect(groupingBy(n -> n.get("sno"),toSet()));
         print(map.entrySet());
-        Map<String,List<String>> m = list.stream().collect(groupingBy(n->n.get("sno"),mapping(n->n.get("name"),toList())));
-        System.out.println(m.entrySet());
     }
 }
