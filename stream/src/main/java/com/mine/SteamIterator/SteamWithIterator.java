@@ -5,12 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -92,5 +93,22 @@ public class SteamWithIterator {
     @Test
     public void useStreamSqu(){
         Stream<BigInteger> bigInteger = Stream.iterate(BigInteger.ZERO,n -> n.add(BigInteger.ONE));
+    }
+
+    @Test
+    public void method(){
+        BigDecimal[] barr = new BigDecimal[]{BigDecimal.valueOf(2),BigDecimal.valueOf(4),BigDecimal.valueOf(6),BigDecimal.valueOf(8),BigDecimal.valueOf(1)};
+        Arrays.stream(barr).reduce(BigDecimal::add);
+    }
+
+    @Test
+    public void method4(){
+        List<Map<String,String>> list = new ArrayList<>();
+        Map<String,String> m1 = new HashMap<>();
+        m1.put("name","AAA");
+        list.add(m1);
+        Map<String,String> m2 = new HashMap<>();
+        m2.put("name","AAA");
+        list.add(m2);
     }
 }
